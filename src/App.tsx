@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+type BlogPost = {
+  id: number;
+  tag: string;
+  year: string;
+  title: string;
+  summary: string;
+  body: string;
+};
+
 const blogPosts = [
   {
     id: 1,
@@ -152,7 +161,7 @@ const WebSummary = () => (
   </div>
 );
 
-const BlogCard = ({ post, isOpen, onToggle }) => (
+const BlogCard = ({ post, isOpen, onToggle }: { post: BlogPost; isOpen: boolean; onToggle: () => void }) => (
   <div
     style={{
       borderBottom: "1px solid #e2d9cc",
@@ -243,7 +252,7 @@ const BlogCard = ({ post, isOpen, onToggle }) => (
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("web");
-  const [openPost, setOpenPost] = useState(null);
+  const [openPost, setOpenPost] = useState<number | null>(null);
 
   return (
     <div style={{
